@@ -1,5 +1,4 @@
 from Vector3 import Vector3
-from Vector2 import Vector2
 from Render import *
 import math
 from random import random

@@ -2,7 +2,6 @@ from Math import Math
 from Camera import Camera
 from Render import *
 from GameObject import GameObject
-from Vector2 import Vector2
 import subprocess as sp
 import math
 import time
