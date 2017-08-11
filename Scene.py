@@ -14,7 +14,7 @@ class Scene:
         self.mainCamera = ''
 
         # TODO: Implement a renderer.
-        self.resolution = Vector2(80, 40)
+        self.resolution = [80, 40]
         self.render_grid = {}
         self.render_grid_color = {}
 
@@ -74,8 +74,8 @@ class Scene:
         if not Math.in_range(rel_x, 0, 1) or not Math.in_range(rel_y, 0, 1):
             return
 
-        x = rel_x * (self.resolution.x - 1)
-        y = rel_y * (self.resolution.y - 1)
+        x = rel_x * (self.resolution[0] - 1)
+        y = rel_y * (self.resolution[1] - 1)
 
         x = round(x)
         y = round(y)
