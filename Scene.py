@@ -35,7 +35,7 @@ class Scene:
 
     def pre_render(self):
         # Clear the screen.
-        output = sp.call('clear', shell=True)
+        print(chr(27) + "[2J")
         self.clear_screen()
 
         for name, instance in self.objects.items():
