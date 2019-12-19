@@ -16,16 +16,17 @@ import sys
 scene = Scene()
 
 # geometry = ObjReader.load('bunny.obj')
-geometry = ObjReader.load(sys.argv[1])
+if len(sys.argv) > 1:
+    geometry = ObjReader.load(sys.argv[1])
 
-scene.add_object('object', GameObject)
-for key, item in geometry.items():
-   scene.objects['object'].add_component(key, MeshComponent)
-   scene.objects['object'].components[key].points = item.vertices
+    scene.add_object('object', GameObject)
+    for key, item in geometry.items():
+       scene.objects['object'].add_component(key, MeshComponent)
+       scene.objects['object'].components[key].points = item.vertices
 
-scene.objects['object'].transform.position = Vector3(0, -0.8, 150)
-scene.objects['object'].transform.scale = 150
-scene.objects['object'].add_component('animation', Animation)
+    scene.objects['object'].transform.position = Vector3(0, -0.8, 150)
+    scene.objects['object'].transform.scale = 150
+    scene.objects['object'].add_component('animation', Animation)
 
 scene.add_object('cube', GameObject)
 scene.add_object('sphere', GameObject)
@@ -41,8 +42,8 @@ scene.objects['cube'].components['cubeMesh'].points = [
     Vector3(-1, -1, 1), Vector3(1, -1, 1)
 ]
 
-scene.objects['cube'].add_component('sphere', MeshComponent)
-scene.objects['cube'].components['sphere'].points = ObjReader.load('test_c.obj')['default'].vertices
+#scene.objects['cube'].add_component('sphere', MeshComponent)
+#scene.objects['cube'].components['sphere'].points = ObjReader.load('test_c.obj')['default'].vertices
 
 # Define a camera.
 scene.add_object('mainCamera', Camera)
