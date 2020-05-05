@@ -25,7 +25,7 @@ class Scene:
         self.objects[object_name] = object()
 
     def set_camera(self, object_name):
-        if not self.objects.has_key(object_name) or not isinstance(self.objects[object_name], Camera):
+        if not object_name in self.objects or not isinstance(self.objects[object_name], Camera):
             return
 
         self.mainCamera = object_name

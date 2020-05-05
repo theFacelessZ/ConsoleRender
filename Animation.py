@@ -1,5 +1,4 @@
 from GameObject import *
-from Math import Math
 from Time import Time
 
 
@@ -36,7 +35,9 @@ class AnimationFov(GameComponent):
     def post_render(self, scene):
         pass
 
+
 class AnimationCam(GameComponent):
+
     def __init__(self, game_object):
         super(AnimationCam, self).__init__(game_object)
         self.period = 0

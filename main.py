@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 
-from Vector3 import Vector3
-from Render import *
-from GameObject import *
 from Camera import Camera
 from Scene import Scene
 from Animation import *
@@ -15,7 +12,6 @@ import sys
 # Define a renderable scene.
 scene = Scene()
 
-# geometry = ObjReader.load('bunny.obj')
 if len(sys.argv) > 1:
     geometry = ObjReader.load(sys.argv[1])
 
@@ -27,23 +23,20 @@ if len(sys.argv) > 1:
     scene.objects['object'].transform.position = Vector3(0, -0.8, 150)
     scene.objects['object'].transform.scale = 150
     scene.objects['object'].add_component('animation', Animation)
+else:
+    # If no obj argument is fetched, simply load a test cube.
+    scene.add_object('cube', GameObject)
+    scene.objects['cube'].transform.position = Vector3(0, 0, 200)
+    scene.objects['cube'].transform.scale = 50
 
-scene.add_object('cube', GameObject)
-scene.add_object('sphere', GameObject)
-
-scene.objects['cube'].add_component('animation', Animation)
-scene.objects['cube'].transform.position = Vector3(0, 0, 200)
-scene.objects['cube'].transform.scale = 50
-scene.objects['cube'].add_component('cubeMesh', MeshComponent)
-scene.objects['cube'].components['cubeMesh'].points = [
-    Vector3(-1, 1, -1), Vector3(1, 1, -1),
-    Vector3(-1, -1, -1), Vector3(1, -1, -1),
-    Vector3(-1, 1, 1), Vector3(1, 1, 1),
-    Vector3(-1, -1, 1), Vector3(1, -1, 1)
-]
-
-#scene.objects['cube'].add_component('sphere', MeshComponent)
-#scene.objects['cube'].components['sphere'].points = ObjReader.load('test_c.obj')['default'].vertices
+    scene.objects['cube'].add_component('animation', Animation)
+    scene.objects['cube'].add_component('cubeMesh', MeshComponent)
+    scene.objects['cube'].components['cubeMesh'].points = [
+        Vector3(-1, 1, -1), Vector3(1, 1, -1),
+        Vector3(-1, -1, -1), Vector3(1, -1, -1),
+        Vector3(-1, 1, 1), Vector3(1, 1, 1),
+        Vector3(-1, -1, 1), Vector3(1, -1, 1)
+    ]
 
 # Define a camera.
 scene.add_object('mainCamera', Camera)
